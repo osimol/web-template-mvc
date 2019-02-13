@@ -1,5 +1,7 @@
 package com.prototype.web.controllers;
 
+import java.util.Date;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -13,7 +15,8 @@ public class HelloController {
 
     @RequestMapping(value="/hello.htm")
     public ModelAndView handleRequest() {
-        logger.info("Returning hello view");
-        return new ModelAndView("hello.jsp");
+    	String now = (new Date()).toString();
+        logger.info("Returning hello view with " + now);
+        return new ModelAndView("hello", "now", now);
     }
 }
